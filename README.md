@@ -12,6 +12,6 @@ This file contains rules for suggestions for the `affectedPages` attribute.
 
 Before matching, the text is converted to lowercase, so keys should only contain lowercase letters. Characters `()"'?!.,;:` are removed, keys cannot contain these either.
 
-If one key is a subset of another, the longer one takes precedence. Rule `"sounds for experiment 52b": []` and rule `"experiment 52b sounds": [],` both have priority over rule `"experiment 52b": ["Experiment 52B"],`.
-
 In the example string `Liquid Oxygen Mask` with rules `"liquid oxygen": ["Liquid Oxygen"]` and `"oxygen mask": ["Oxygen Mask"]` only the first rule is matched, as matches cannot overlap.
+
+If one key is a subset of another, the longer one takes precedence. Rule `"sounds for experiment 52b": []` and (more importantly) rule `"experiment 52b sounds": []` both have priority over rule `"experiment 52b": ["Experiment 52B"]`.
