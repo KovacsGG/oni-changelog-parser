@@ -219,9 +219,12 @@ def returnBuildNum(update):
 	return update['build']
 
 def getPhraseMap():
+	global phraseMap 
+	if phraseMap is None:
 	with open('phrasemap.json') as file:
 		map = json.load(file)
-	return dict(sorted(map.items()))
+		phraseMap = dict(sorted(map.items()))
+	return phraseMap
 
 def filterKeys(phrase, keys):
 	sample = phrase.split()
