@@ -1,9 +1,9 @@
 # Which update feed to query updates from? 'Base'/'SO'
-FEED = 'SO'
+FEED = 'Base'
 # Version prefix is automatically set to 'EX1' for the SO feed. Set it here for Base.
-PREFIX = 'FA'
+PREFIX = 'U33'
 # Number of most recent items to process from the feed.
-LATEST_N = 14
+LATEST_N = 5
 
 
 from html.parser import HTMLParser
@@ -143,7 +143,9 @@ class InfoParser(HTMLParser):
 				).replace("''''''",''
 				).replace("''''", ''
             	).replace("’", "'"
-                ).replace("‘", "'")
+                ).replace("‘", "'"
+				).replace("“", '"'
+				).replace("”", '"')
 			header = re.match("'''([\w ]+)'''", self.buffer)
 			if header:
 				if not self.headerList.count("'''"):
@@ -221,8 +223,8 @@ def returnBuildNum(update):
 def getPhraseMap():
 	global phraseMap 
 	if phraseMap is None:
-	with open('phrasemap.json') as file:
-		map = json.load(file)
+		with open('phrasemap.json') as file:
+			map = json.load(file)
 		phraseMap = dict(sorted(map.items()))
 	return phraseMap
 
@@ -349,6 +351,7 @@ def getLatest(n, feed):
 	return latest[1:n+1]
 
 
+phraseMap = None
 result = getLatest(LATEST_N, FEED)
 print('start\n', str(result))
 for update in result:
