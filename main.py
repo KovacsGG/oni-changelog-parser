@@ -1,9 +1,9 @@
 # Which update feed to query updates from? 'Base'/'SO'
 FEED = 'Base'
 # Version prefix is automatically set to 'EX1' for the SO feed. Set it here for Base.
-PREFIX = 'U33'
+PREFIX = 'U34'
 # Number of most recent items to process from the feed.
-LATEST_N = 5
+LATEST_N = 2
 
 
 from html.parser import HTMLParser
